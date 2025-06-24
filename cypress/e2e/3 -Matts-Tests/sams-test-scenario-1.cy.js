@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import NBSHomepage from '../../support/page-objects/nbs-homepage';
 import DysonHomepage from '../../support/page-objects/dyson-homepage';
 
