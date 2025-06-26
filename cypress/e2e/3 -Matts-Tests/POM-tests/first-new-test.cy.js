@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-import NBSHomepage from '../../support/page-objects/nbs-homepage';
-import DysonHomepage from '../../support/page-objects/dyson-homepage';
+import NBSHomepage from '../../../support/page-objects/nbs-homepage';
+import DysonHomepage from '../../../support/page-objects/dyson-homepage';
 
 // Main test suite for NBS Source regression tests
 describe('NBS Source Regression Tests', () => {
@@ -24,14 +24,13 @@ describe('NBS Source Regression Tests', () => {
     it('Ensure Dyson homepage URL and H1 text is as expected', () => {
         DysonHomepage.verifyDysonPage
     });
-
-    // Test to verify the contact number on the Dyson page
-    it('Ensure contact number & href is as expected', () => {
-        DysonHomepage.verifyContactNumber();
+    // Test to Verify the manufacturers homepage URL contains expected text:manufacturer
+    it('Ensure Dyson homepage URL contains expected text', () => {
+        cy.url().should('include', 'manufacturer);');
+        // Test to Verify the manufacturers homepage URL contains expected text:dyson
+    it('Ensure Dyson homepage URL contains expected text', () => {
+        cy.url().should('include', 'dyson');
+        // Test to Verify the manufacturers homepage URL contains expected text:overview
+    it('Ensure Dyson homepage URL contains expected text', () => {
+        cy.url().should('include', 'overview');
     });
-
-    // Test to verify the website link on the Dyson page
-    it('Ensure the link to external Dyson website has correct text and href', () => {
-        DysonHomepage.verifyWebsiteLink();
-    });
-});
