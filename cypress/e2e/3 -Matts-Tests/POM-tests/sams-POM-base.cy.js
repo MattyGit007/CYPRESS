@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-import NBSHomepage from '../../support/page-objects/nbs-homepage';
-import DysonHomepage from '../../support/page-objects/dyson-homepage';
+import NBSHomepage from '../../../support/page-objects/nbs-homepage';
+import DysonHomepage from '../../../support/page-objects/dyson-homepage';
 
 // Main test suite for NBS Source regression tests
 describe('NBS Source Regression Tests', () => {
