@@ -22,7 +22,7 @@ describe('NBS Source Regression Tests', () => {
 
     // Test to verify the Dyson homepage URL and H1 text are as expected
     it('Ensure Dyson homepage URL and H1 text is as expected', () => {
-        DysonHomepage.verifyDysonPage
+        DysonHomepage.verifyDysonPage();
     });
 
     // Test to verify the contact number on the Dyson page
