@@ -29,5 +29,5 @@ jobs:
       run: npm install --legacy-peer-deps  # Adjust for your package manager if not using npm
  
     - name: Run only Dyson homepage feature
-      run: npx cypress run
+      run: npx cypress run --spec "cypress/e2e/3 -Matts-Tests/matts-big-script -HOOKS.cy.js" --headed --browser electron
 
