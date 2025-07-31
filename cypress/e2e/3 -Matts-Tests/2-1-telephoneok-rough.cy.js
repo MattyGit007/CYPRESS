@@ -30,7 +30,7 @@ describe('NBS Source Regression Tests', () => {
 
         // cy.get('.brand-contact > [appstats=""]')
         // cy.contains('08003457788');
-        // // ask Sam
+        // // ask Sam for info
 
     });
 
