@@ -20,6 +20,11 @@ class NBSHomepage {
     selectDysonResult() {
         cy.contains(this.dysonResultText, { timeout: 10000 }).should('be.visible').click();
     }
+
+    // visit nbs homepage
+    visitNBSHomepage() {
+        cy.visit('https://source.thenbs.com/');
+    }
 }
 
 // Export a singleton instance of the NBSHomepage class
