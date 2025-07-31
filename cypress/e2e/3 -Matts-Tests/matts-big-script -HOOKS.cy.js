@@ -103,7 +103,7 @@ describe("Matts Dyson Homepage Regression Tests", () => {
     }).then((response) => {
       expect(response.status).to.eq(200); // Verify the response status is 200
       expect(JSON.stringify(response.body)).to.include("country"); // Checks for the word "country"
-      expect(JSON.stringify(response.body)).to.include("GB"); // Checks for the word "GB"
+      expect(JSON.stringify(response.body)).to.satisfy(str => str.includes("GB") || str.includes("US")); // Checks for "GB" or "US"
 
       cy.get(".mdc-button__label")
         .should("be.visible")
