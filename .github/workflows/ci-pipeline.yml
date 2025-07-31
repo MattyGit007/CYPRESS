@@ -1,0 +1,35 @@
+
+name: CI Pipeline
+ 
+on:
+  push:
+    branches:
+      - main  # Triggers on pushes to the main branch
+  pull_request:
+    branches:
+      - main
+ 
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Clear cache
+      run: |
+        rm -rf node_modules
+        npm cache clean --force
+   
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20.18.0'  # Specify your Node version
+ 
+    - name: Install dependencies
+      run: npm install --legacy-peer-deps  # Adjust for your package manager if not using npm
+ 
+    - name: Run only Dyson homepage feature
+      run: npx cypress run --spec "cypress/e2e/3 - Matts-Tests/matts-big-script -HOOKS.cy.js" --headed --browser electron
+
+ 
