@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 class NBSHomepage {
     // Selectors as class properties
     acceptCookiesButton = 'button'; // Selector for the Accept Cookies button
