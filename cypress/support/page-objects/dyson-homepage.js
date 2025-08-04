@@ -101,28 +101,21 @@ class DysonHomepage {
         .should("be.visible")
         .and("contain.text", "UK");
     });
+  }
 
-      // 9 -verify the Dyson navigation bar has the correct tabs and expected links
-      verifyDysonNavigationBar() ;{
-        cy.get(".mat-mdc-tab-links")
+  // 9 -verify the Dyson navigation bar has the correct tabs and expected links
+  verifyDysonNavigationBar() {
+    cy.get(".mat-mdc-tab-links")
       .should("be.visible")
       .should("contain.text", "Overview") // Ensure the first tab is 'Overview'
       .and("contain.text", "Products") // Ensure the second tab is 'Products'
       .and("contain.text", "Case studies");
 
-      cy.get(
+    cy.get(
       '.mat-mdc-tab-links a[href="/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"]'
-      ).should("be.visible"); // Ensure the 'Overview' tab link is visible
-  };
+    ).should("be.visible"); // Ensure the 'Overview' tab link is visible
+  }
+}
 
-
-      }
-
-
-
-
-
-
-  
 // Export a singleton instance of the DysonHomepage class
 export default new DysonHomepage();

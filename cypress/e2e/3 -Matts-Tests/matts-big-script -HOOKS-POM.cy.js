@@ -9,8 +9,6 @@ describe("Matts Dyson Homepage Regression Tests", () => {
     NBSHomepage.acceptCookies();
     nbsHomepage.searchFor("Dyson");
     nbsHomepage.selectDysonResult();
-    })
-  
   });
 
   // 1 - Verifies that the URL is correct for Dyson homepage
@@ -23,43 +21,38 @@ describe("Matts Dyson Homepage Regression Tests", () => {
     DysonHomepage.verifyContactNumber();
   });
 
-  //3- I verify the H1 title on the page is as expected
+  // 3- I verify the H1 title on the page is as expected
   it("3- verify H1 title is as expected", () => {
-    DysonHomepage.verifyH1Title(); 
+    DysonHomepage.verifyH1Title();
   });
 
-  // //4- I verify the href attribute of the Source logo is as expected
+  // 4- I verify the href attribute of the Source logo is as expected
   it("4- verify the href attribute of the source logo is as expected", () => {
     DysonHomepage.verifySourceLogoHref();
-
   });
 
-  //5- I verify the external manufacturer link attribute contains the correct url
+  // 5- I verify the external manufacturer link attribute contains the correct url
   it("5- verify the external manufacturer link attribute contains the correct url", () => {
     DysonHomepage.verifyWebsiteLink();
-
   });
 
-  //6- I verify the contact manufacturer button shows the correct text
+  // 6- I verify the contact manufacturer button shows the correct text
   it("6- verify the contact manufacturer button shows the correct text", () => {
     DysonHomepage.verifyContactManufacturerButton();
-    
   });
 
   // 7- I run accessibility checks on the manufacturer homepage using AXE plugin and report results to console
   it("7- verify accessibility on manufacturer homepage using Axe plugin", () => {
     DysonHomepage.verifyAccessibilityChecks();
-
   });
 
-  // //8- I perform an api test and verify the response and content is as expected
+  // 8- I perform an api test and verify the response and content is as expected
   it("8- Verify API content and UI display", () => {
     DysonHomepage.verifyApiResponse();
-
   });
 
-  // //9- I verify the Dyson navigation bar has the correct tabs and expected links
+  // 9- I verify the Dyson navigation bar has the correct tabs and expected links
   it("9- verify the Dyson navigation bar has the correct tabs and expected links", () => {
     DysonHomepage.verifyDysonNavigationBar();
-
-})
+  });
+});
