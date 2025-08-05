@@ -3,8 +3,7 @@ class DysonHomepage {
     // Selectors for elements on the Dyson page
     dysonUrlPart = '/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview'; // Partial URL to identify Dyson page
     dysonHeader = 'h1.ng-star-inserted'; // Selector for the main page header (H1)
-
-
+ 
     // Actions
     //-------------
     // 1 - Verifies that the current URL and page header are correct for Dyson
@@ -12,7 +11,7 @@ class DysonHomepage {
         cy.url().should('include', this.dysonUrlPart); // Check URL contains Dyson path
         cy.get(this.dysonHeader).should('have.text', 'Dyson'); // Check H1 text is 'Dyson'
     }
-
+ 
     // 2 -Verifies the contact number link is visible, has correct text, and correct tel: protocol
     verifyContactNumber() {
         cy.get('a[href="tel:08003457788"]')
@@ -24,11 +23,12 @@ class DysonHomepage {
       "href",
       "tel:08003457788")
     }
+ 
    // 3- Verifies the H1 title on the page is as expected
-      verifyH1Title() {
+    verifyH1Title() {
        cy.get("h1").should("contain.text", "Dyson");
-  };
-
+    } 
+ 
     // 4 - Verifies the href attribute of the Source logo is as expected
     verifySourceLogoHref() {
       cy.get('a[href="https://source.thenbs.com/"]')
@@ -37,8 +37,8 @@ class DysonHomepage {
       cy.get('a[href="/"]')
       .should("be.visible") // Ensure the Source logo link is visible
       .should("have.attr", "href", "/"); // Verify the href attribute will be as expected "/"
-  };
-
+    } 
+ 
     // 5 - Verifies the external manufacturer link attribute contains the correct url
     verifyWebsiteLink() {
       cy.get(
@@ -51,15 +51,15 @@ class DysonHomepage {
         "https://www.dyson.co.uk/commercial/overview/architects-designers"
       ) // Verify the href attribute is correct
       .should("have.text", " Website "); // Verify the link text is 'Website'
-  };
-
+    } 
+ 
     // 6 - Verifies the contact manufacturer button shows the correct text
     verifyContactManufacturerButton() {
       cy.get(".contact-button > .mdc-button__label")
       .should("be.visible") // Ensure the contact manufacturer button is visible
       .should("contain.text", "Contact manufacturer"); // Verify the button text is as expected
-  };
-
+    } 
+ 
     // 7- verify accessibility checks on the manufacturer homepage using AXE plugin and report results to console
     verifyAccessibilityChecks() {
       cy.injectAxe();
@@ -83,8 +83,8 @@ class DysonHomepage {
       },
       { timeout: 10000 }
     )
-    };
-
+    } 
+ 
       //8- api test and verify the response and content is as expected
       verifyApiResponse() {
         cy.request({
@@ -96,33 +96,26 @@ class DysonHomepage {
       expect(JSON.stringify(response.body)).to.satisfy(
         (str) => str.includes("GB") || str.includes("US")
       ); // Checks for "GB" or "US"
-
+ 
       cy.get(".mdc-button__label")
         .should("be.visible")
         .and("contain.text", "UK");
     });
-
+    } 
+ 
       // 9 -verify the Dyson navigation bar has the correct tabs and expected links
-      verifyDysonNavigationBar() ;{
+      verifyDysonNavigationBar() { // Fixed: Removed semicolon before opening brace
         cy.get(".mat-mdc-tab-links")
       .should("be.visible")
       .should("contain.text", "Overview") // Ensure the first tab is 'Overview'
       .and("contain.text", "Products") // Ensure the second tab is 'Products'
       .and("contain.text", "Case studies");
-
+ 
       cy.get(
       '.mat-mdc-tab-links a[href="/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"]'
       ).should("be.visible"); // Ensure the 'Overview' tab link is visible
-  };
-
-
-      }
-
-
-
-
-
-
-  
+      } 
+}
+ 
 // Export a singleton instance of the DysonHomepage class
 export default new DysonHomepage();
