@@ -9,8 +9,9 @@ class DysonHomepage {
   websiteLink = 'a[href="https://www.dyson.co.uk/commercial/overview/architects-designers"]'; // Selector for the external manufacturer link
   ContactManufacturerButton = ".contact-button > .mdc-button__label"; // Selector for the contact manufacturer button
   // missing tests 7 and 8 selectors
+  countryButton = ".mdc-button__label"; // Selector for the UK country button
   DysonNavigationBar = ".mat-mdc-tab-links"; // Selector for the Dyson navigation bar
-
+  overviewTabLink = '.mat-mdc-tab-links a[href="/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"]'; // Selector for the Overview tab link
 
 
   // Actions
@@ -104,7 +105,7 @@ class DysonHomepage {
         (str) => str.includes("GB") || str.includes("US")
       ); // Checks for "GB" or "US"
 
-      cy.get(".mdc-button__label")
+      cy.get(this.countryButton)
         .should("be.visible")
         .and("contain.text", "UK");
     });
@@ -119,8 +120,8 @@ class DysonHomepage {
       .and("contain.text", "Case studies");
 
     cy.get(
-      '.mat-mdc-tab-links a[href="/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"]'
-    ).should("be.visible"); // Ensure the 'Overview' tab link is visible
+      this.overviewTabLink)
+    .should("be.visible"); // Ensure the 'Overview' tab link is visible
   }
 }
 
