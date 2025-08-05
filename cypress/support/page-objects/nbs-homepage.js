@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 class NBSHomepage {
     // Selectors as class properties
     acceptCookiesButton = 'button'; // Selector for the Accept Cookies button
@@ -19,6 +21,11 @@ class NBSHomepage {
     // Selects the Dyson result from the search results
     selectDysonResult() {
         cy.contains(this.dysonResultText, { timeout: 10000 }).should('be.visible').click();
+    }
+
+    // visit nbs homepage
+    visitNBSHomepage() {
+        cy.visit('https://source.thenbs.com/');
     }
 }
 
