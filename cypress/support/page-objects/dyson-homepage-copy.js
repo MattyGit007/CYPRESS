@@ -4,6 +4,14 @@ class DysonHomepage {
   dysonUrlPart = "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"; // Partial URL to identify Dyson page
   dysonHeader = "h1.ng-star-inserted"; // Selector for the main page header (H1)
   contactNumber = 'a[href="tel:08003457788"]';
+  H1Title = "h1"; // Selector for the H1 title
+  sourceLogoHref = 'a[href="https://source.thenbs.com/"]'; // Selector for the Source logo link
+  websiteLink = 'a[href="https://www.dyson.co.uk/commercial/overview/architects-designers"]'; // Selector for the external manufacturer link
+  ContactManufacturerButton = ".contact-button > .mdc-button__label"; // Selector for the contact manufacturer button
+  // missing tests 7 and 8 selectors
+  DysonNavigationBar = ".mat-mdc-tab-links"; // Selector for the Dyson navigation bar
+
+
 
   // Actions
   //-------------
@@ -27,12 +35,12 @@ class DysonHomepage {
   }
   // 3- Verifies the H1 title on the page is as expected
   verifyH1Title() {
-    cy.get("h1").should("contain.text", "Dyson");
+    cy.get(this.H1Title).should("contain.text", "Dyson");
   }
 
   // 4 - Verifies the href attribute of the Source logo is as expected
   verifySourceLogoHref() {
-    cy.get('a[href="https://source.thenbs.com/"]')
+    cy.get(this.sourceLogoHref)
       .should("be.visible") // Ensure the Source logo link is visible
       .should("have.attr", "href", "https://source.thenbs.com/"); // Verify the href attribute is correct
     cy.get('a[href="/"]')
@@ -42,9 +50,7 @@ class DysonHomepage {
 
   // 5 - Verifies the external manufacturer link attribute contains the correct url
   verifyWebsiteLink() {
-    cy.get(
-      'a[href="https://www.dyson.co.uk/commercial/overview/architects-designers"]'
-    )
+    cy.get(this.websiteLink )
       .should("be.visible", { timeout: 10000 }) // Ensure the external manufacturer link is visible
       .should(
         "have.attr",
@@ -56,7 +62,7 @@ class DysonHomepage {
 
   // 6 - Verifies the contact manufacturer button shows the correct text
   verifyContactManufacturerButton() {
-    cy.get(".contact-button > .mdc-button__label")
+    cy.get(this.ContactManufacturerButton)
       .should("be.visible") // Ensure the contact manufacturer button is visible
       .should("contain.text", "Contact manufacturer"); // Verify the button text is as expected
   }
@@ -106,7 +112,7 @@ class DysonHomepage {
 
   // 9 -verify the Dyson navigation bar has the correct tabs and expected links
   verifyDysonNavigationBar() {
-    cy.get(".mat-mdc-tab-links")
+    cy.get(this.DysonNavigationBar)
       .should("be.visible")
       .should("contain.text", "Overview") // Ensure the first tab is 'Overview'
       .and("contain.text", "Products") // Ensure the second tab is 'Products'
