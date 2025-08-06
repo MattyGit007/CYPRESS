@@ -2,16 +2,21 @@
 class DysonHomepage {
   // Selectors for elements on the Dyson page
   dysonUrlPart = "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"; // Partial URL to identify Dyson page
-  dysonHeader = "h1.ng-star-inserted"; // Selector for the main page header (H1)
-  contactNumber = 'a[href="tel:08003457788"]';
+  dysonHeader = "h1"; // Selector for the main page header (H1)
+  contactNumber = '[action="telephone"]'; // Selector for the contact number link
   H1Title = "h1"; // Selector for the H1 title
   sourceLogoHref = 'a[href="https://source.thenbs.com/"]'; // Selector for the Source logo link
-  websiteLink = 'a[href="https://www.dyson.co.uk/commercial/overview/architects-designers"]'; // Selector for the external manufacturer link
-  ContactManufacturerButton = ".contact-button > .mdc-button__label"; // Selector for the contact manufacturer button
+  websiteLink = 'a[action="company-website"]'; // Selector for the external manufacturer link
+  contactManufacturerButton = '.contact-button'; // Selector for the contact manufacturer button
   // missing tests 7 and 8 selectors
-  countryButton = ".mdc-button__label"; // Selector for the UK country button
+  countryButton = 'button[aria-label="Choose region"]'; // Selector for the UK country button
   DysonNavigationBar = ".mat-mdc-tab-links"; // Selector for the Dyson navigation bar
-  overviewTabLink = '.mat-mdc-tab-links a[href="/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"]'; // Selector for the Overview tab link
+  overviewTab = '[data-cy="overviewTab"]'; // Selector for the Overview tab
+  productsTab = '[data-cy="productsTab"]'; // Selector for the Products tab
+  certificationsTab = '[data-cy="certificatesTab"]'; // Selector for the Certificates tab
+  literatureTab = '[data-cy="literatureTab"]'; // Selector for the Literature tab
+  caseStudiesTab = '[data-cy="caseStudiesTab"]'; // Selector for the Case Studies tab
+  aboutTab = '[data-cy="aboutTab"]'; // Selector for the About tab
 
 
   // Actions
@@ -24,7 +29,7 @@ class DysonHomepage {
 
   // 2 -Verifies the contact number link is visible, has correct text, and correct tel: protocol
   verifyContactNumber() {
-    cy.get(this.contactNumber)
+    cy.get(this.contactNumber, { timeout: 10000 })
       .should("be.visible") // Ensure the contact number is visible
       .should("have.text", " 08003457788 "); // Ensure the text matches the expected number
     // Additionally, verify the href uses the correct telephone protocol, ie tel:
@@ -34,9 +39,9 @@ class DysonHomepage {
       "tel:08003457788"
     );
   }
-  // 3- Verifies the H1 title on the page is as expected
-  verifyH1Title() {
-    cy.get(this.H1Title).should("contain.text", "Dyson");
+  // 3- Verifies the title on the page is as expected
+  verifyTitle() {
+    cy.title().should('eq', 'Dyson | Overview | NBS BIM Library');
   }
 
   // 4 - Verifies the href attribute of the Source logo is as expected
@@ -63,7 +68,7 @@ class DysonHomepage {
 
   // 6 - Verifies the contact manufacturer button shows the correct text
   verifyContactManufacturerButton() {
-    cy.get(this.ContactManufacturerButton)
+    cy.get(this.contactManufacturerButton)
       .should("be.visible") // Ensure the contact manufacturer button is visible
       .should("contain.text", "Contact manufacturer"); // Verify the button text is as expected
   }
@@ -95,6 +100,7 @@ class DysonHomepage {
 
   //8- api test and verify the response and content is as expected
   verifyApiResponse() {
+    cy.viewport(1100, 800); // Set viewport size for the test
     cy.request({
       method: "GET",
       url: "https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location",
@@ -117,11 +123,29 @@ class DysonHomepage {
       .should("be.visible")
       .should("contain.text", "Overview") // Ensure the first tab is 'Overview'
       .and("contain.text", "Products") // Ensure the second tab is 'Products'
-      .and("contain.text", "Case studies");
+      .and("contain.text", "Case studies")
+      .and("contain.text", "Literature") // Ensure the third tab is 'Literature'
+      .and("contain.text", "Certifications") // Ensure the fourth tab is 'Certifications'
+      .and("contain.text", "About"); // Ensure the fifth tab is 'About' 
 
-    cy.get(
-      this.overviewTabLink)
-    .should("be.visible"); // Ensure the 'Overview' tab link is visible
+
+    cy.get(this.overviewTab)
+      .should('have.attr', 'href', '/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview');
+
+    cy.get(this.productsTab)
+      .should('have.attr', 'href', '/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products');
+
+    cy.get(this.certificationsTab)
+      .should('have.attr', 'href', '/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications');
+
+    cy.get(this.literatureTab)
+      .should('have.attr', 'href', '/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature');
+
+    cy.get(this.caseStudiesTab)
+      .should('have.attr', 'href', '/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies');
+
+    cy.get(this.aboutTab)
+      .should('have.attr', 'href', '/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about');
   }
 }
 
