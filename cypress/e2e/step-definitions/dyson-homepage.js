@@ -1,4 +1,3 @@
-
 /// <reference types="cypress" />
 
 // Import page objects
@@ -13,7 +12,7 @@ var {
 } = require("@badeball/cypress-cucumber-preprocessor");
 
 // Given step to visit NBSHomepage then visit the manufacturer home page
-Given(`I navigate to the Dyson manufacturer homepage`, () => {
+Given('I navigate to the Dyson manufacturer homepage', () => {
 
     nbsHomepage.visitNBSHomepage();
     nbsHomepage.acceptCookies();
