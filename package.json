@@ -11,5 +11,10 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.5",
     "cypress": "14.4.1",
     "cypress-axe": "^1.6.0"
-  }
+  },
+    "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/5-step_definitions/**/*.js",
+    "filterSpecs": true,
+    "omitFiltered": true
+}
 }

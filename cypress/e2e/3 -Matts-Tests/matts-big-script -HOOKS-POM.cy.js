@@ -1,5 +1,5 @@
 import "cypress-axe";
-import dysonHomepage from "../../support/page-objects/dyson-homepage-copy";
+import dysonHomepage from "../../support/page-objects/dyson-homepage";
 import nbsHomepage from "../../support/page-objects/nbs-homepage";
 
 describe("Matts Dyson Homepage Regression Tests", () => {
