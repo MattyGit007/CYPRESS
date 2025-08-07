@@ -148,4 +148,4 @@ class DysonHomepage {
 }
 
 // Export a singleton instance of the DysonHomepage class
-export default new DysonHomepage();
+module.exports = new DysonHomepage();

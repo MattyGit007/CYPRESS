@@ -1,4 +1,3 @@
-
 # The main purpose of the project is to demonstrate the following:
 #  - Cucumber/Gherkin and Feature file implementation
 #  - Page Object Model
@@ -12,5 +11,8 @@
 Feature: dyson homepage regression tests
 
     Background: navigate to the Dyson manufacturer homepage
-    Given I navigate to the Dyson manufacturer homepage
-        
+        Given I navigate to the Dyson manufacturer homepage
+
+    Scenario: Verify the manufacturers homepage URL contains expected text
+        Then The URL will contain the expected text "/manufacturer/dyson/overview"
+

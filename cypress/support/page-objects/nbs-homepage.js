@@ -30,4 +30,4 @@ class NBSHomepage {
 }
 
 // Export a singleton instance of the NBSHomepage class
-export default new NBSHomepage();
+module.exports = new NBSHomepage();
