@@ -14,5 +14,5 @@ Feature: dyson homepage regression tests
         Given I navigate to the Dyson manufacturer homepage
 
     Scenario: Verify the manufacturers homepage URL contains expected text
-        Then The URL will contain the expected text "/manufacturer/dyson/overview"
+        Then The URL will contain the expected text
 

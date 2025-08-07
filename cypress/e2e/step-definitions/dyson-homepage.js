@@ -20,6 +20,6 @@ Given('I navigate to the Dyson manufacturer homepage', () => {
 });
 
 // Then step to verify the URL contains expected text - use quotes to capture the parameter
-Then('The URL will contain the expected text {string}', (expectedText) => {
-    dysonHomePage.verifyDysonPage(expectedText);
+Then('The URL will contain the expected text', () => {
+    dysonHomePage.verifyDysonPage();
 });
