@@ -4,13 +4,11 @@ class DysonHomepage {
   dysonUrlPart = "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"; // Partial URL to identify Dyson page
   dysonHeader = "h1"; // Selector for the main page header (H1)
   contactNumber = '[action="telephone"]'; // Selector for the contact number link
-  H1Title = "h1"; // Selector for the H1 title
   sourceLogoHref = 'a[href="https://source.thenbs.com/"]'; // Selector for the Source logo link
   websiteLink = 'a[action="company-website"]'; // Selector for the external manufacturer link
   contactManufacturerButton = '.contact-button'; // Selector for the contact manufacturer button
-  // missing tests 7 and 8 selectors
   countryButton = 'button[aria-label="Choose region"]'; // Selector for the UK country button
-  DysonNavigationBar = ".mat-mdc-tab-links"; // Selector for the Dyson navigation bar
+  dysonNavigationBar = ".mat-mdc-tab-links"; // Selector for the Dyson navigation bar
   overviewTab = '[data-cy="overviewTab"]'; // Selector for the Overview tab
   productsTab = '[data-cy="productsTab"]'; // Selector for the Products tab
   certificationsTab = '[data-cy="certificatesTab"]'; // Selector for the Certificates tab
@@ -119,7 +117,7 @@ class DysonHomepage {
 
   // 9 -verify the Dyson navigation bar has the correct tabs and expected links
   verifyDysonNavigationBar() {
-    cy.get(this.DysonNavigationBar)
+    cy.get(this.dysonNavigationBar)
       .should("be.visible")
       .should("contain.text", "Overview") // Ensure the first tab is 'Overview'
       .and("contain.text", "Products") // Ensure the second tab is 'Products'

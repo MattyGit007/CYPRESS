@@ -10,8 +10,8 @@ describe("Matts Dyson Homepage Regression Tests", () => {
     nbsHomepage.selectDysonResult();
   });
 
-  // 1 - Verifies that the URL is correct for Dyson homepage
-  it("1- verify Dyson homepage url is as expected", () => {
+  // 1 - Verifies that the URL and h1 header text are correct for Dyson homepage
+  it("1- verify Dyson homepage url & h1 header text is as expected", () => {
     dysonHomepage.verifyDysonPage();
   });
 
