@@ -2,7 +2,7 @@
 #  - Cucumber/Gherkin and Feature file implementation
 #  - Page Object Model
 #  - Repository created in GitHub
-#  - Independant tests
+#  - Independent tests
 #  - CI Pipeline Integration
 #  - Implementation of the Axe-plugin for usability reporting
 #  - API Testing
