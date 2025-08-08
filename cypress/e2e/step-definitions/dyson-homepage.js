@@ -23,3 +23,10 @@ Given('I navigate to the Dyson manufacturer homepage', () => {
 Then('The URL will contain the expected text', () => {
     dysonHomePage.verifyDysonPage();
 });
+
+// Then step to verify the telephone number is as expected
+Then('I verify telephone number is as expected', () => {
+    dysonHomePage.verifyContactNumber();
+});
+
+

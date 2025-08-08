@@ -16,3 +16,5 @@ Feature: dyson homepage regression tests
     Scenario: Verify the manufacturers homepage URL contains expected text
         Then The URL will contain the expected text
 
+    Scenario: I verify telephone number is as expected
+        Then I verify telephone number is as expected
