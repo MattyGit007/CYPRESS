@@ -7,7 +7,15 @@
     "cypress:run": "cypress run"
   },
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^21.0.3",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.5",
+    "axe-core": "^4.10.3",
     "cypress": "14.4.1",
     "cypress-axe": "^1.6.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/step-definitions/**/*.js",
+    "filterSpecs": true,
+    "omitFiltered": true
   }
 }
