@@ -22,10 +22,10 @@ Feature: dyson homepage regression tests
     Scenario: I verify the title on the page is as expected
         Then I verify the title on the page is as expected
 
-    Scenario: I Verify the href attribute of the Source logo is as expected
+    Scenario: I verify the href attribute of the Source logo is as expected
         Then I verify the href attribute of the Source logo is as expected
 
-    Scenario: I Verify the external manufacturer link attribute contains the correct url   
+    Scenario: I verify the external manufacturer link attribute contains the correct url   
         Then I verify the external manufacturer link attribute contains the correct url
     
     Scenario: I verify the contact manufacturer button shows the correct text
