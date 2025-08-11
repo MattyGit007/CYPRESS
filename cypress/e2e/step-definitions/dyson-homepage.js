@@ -23,3 +23,46 @@ Given('I navigate to the Dyson manufacturer homepage', () => {
 Then('The URL will contain the expected text', () => {
     dysonHomePage.verifyDysonPage();
 });
+
+// Then step to verify the telephone number is as expected
+Then('I verify telephone number is as expected', () => {
+    dysonHomePage.verifyContactNumber();
+});
+
+// Then step to verify the title on the page is as expected
+Then('I verify the title on the page is as expected', () => {
+    dysonHomePage.verifyTitle();
+});
+
+// Then step to verify the href attribute of the Source logo is as expected
+Then('I verify the href attribute of the Source logo is as expected', () => {
+    dysonHomePage.verifySourceLogoHref();
+});
+
+// Then step to Verify the external manufacturer link attribute contains the correct url
+Then('I verify the external manufacturer link attribute contains the correct url', () => {
+    dysonHomePage.verifyWebsiteLink();
+});
+
+// Then step to verify the contact manufacturer button shows the correct text
+Then('I verify the contact manufacturer button shows the correct text', () => {
+    dysonHomePage.verifyContactManufacturerButton();
+}); 
+
+//Then step to verify accessibility checks on the manufacturer homepage using AXE plugin and report results to console
+Then('I verify accessibility checks on the manufacturer homepage using AXE plugin and report results to console', () => {
+    dysonHomePage.verifyAccessibilityChecks();
+}); 
+
+//Then step to verify the API response and content are as expected
+Then('I verify the API response and content are as expected', () => {
+    dysonHomePage.verifyApiResponse();
+});
+
+// Then step to verify the Dyson navigation bar has the correct tabs and expected links
+Then('I verify the Dyson navigation bar has the correct tabs and expected links', () => {
+    dysonHomePage.verifyDysonNavigationBar();
+});
+
+
+
