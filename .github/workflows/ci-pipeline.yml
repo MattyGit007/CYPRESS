@@ -29,6 +29,7 @@ jobs:
     - name: Install dependencies
       run: npm install --legacy-peer-deps --force
  
-    - name: Run only Dyson homepage feature
-      run: npx cypress run --spec "cypress/e2e/3 -Matts-Tests/matts-big-script -HOOKS.cy.js" --browser electron
+
+    - name: Run Dyson homepage feature and push results to Cypress Cloud
+      run: npx cypress run --spec "cypress/e2e/4-features/dyson-homepage.feature" --record --key 811fea40-deae-4afb-aa81-46621f6da712
 
