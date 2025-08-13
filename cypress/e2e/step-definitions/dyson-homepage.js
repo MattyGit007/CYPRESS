@@ -13,18 +13,20 @@ var {
 
 // Given step to visit NBSHomepage then visit the manufacturer home page
 Given('I navigate to the Dyson manufacturer homepage', () => {
-    nbsHomepage.visitURL();// amended to visitURL
-    nbsHomepage.acceptCookies();
-    cy.fixture('searchTerms').then((data) => {
-        nbsHomepage.searchFor(data.dysonManufacturer);
+    cy.fixture('urls').then((urls) => {
+        nbsHomepage.visitURL(urls.nbsHomepage);
     });
-    nbsHomepage.selectDysonResult();
+    nbsHomepage.acceptCookies();
+    cy.fixture('dyson').then((data) => {
+        nbsHomepage.searchFor(data.dysonText);
+        nbsHomepage.selectDysonResult(data.dysonText);
+    });
 });
 
 // Then step to verify the URL contains expected text, the url is now passed in from the cucumber scenario step
 Then('The URL will contain the expected text {string}', (expectedUrlPart) => {
-    cy.fixture('dysonHomepage').then((dysonHomepageData) => {
-        dysonHomePage.verifyDysonPage(expectedUrlPart, dysonHomepageData.dysonResultText);//The search result we click on is now coming from the dysonHomepage.json fixture file
+    cy.fixture('dyson').then((dysonData) => {
+        dysonHomePage.verifyDysonPage(expectedUrlPart, dysonData.dysonText);//The search result we click on is now coming from the dysonHomepage.json fixture file
     });
 });
 
