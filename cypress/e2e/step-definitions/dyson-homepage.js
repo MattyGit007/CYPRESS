@@ -23,7 +23,9 @@ Given('I navigate to the Dyson manufacturer homepage', () => {
 
 // Then step to verify the URL contains expected text, the url is now passed in from the cucumber scenario step
 Then('The URL will contain the expected text {string}', (expectedUrlPart) => {
-    dysonHomePage.verifyDysonPage(expectedUrlPart);
+    cy.fixture('dysonHomepage').then((dysonHomepageData) => {
+        dysonHomePage.verifyDysonPage(expectedUrlPart, dysonHomepageData.dysonResultText);//The search result we click on is now coming from the dysonHomepage.json fixture file
+    });
 });
 
 // Then step to verify the telephone number is as expected
