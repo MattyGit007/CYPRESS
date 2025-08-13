@@ -23,9 +23,12 @@ class NBSHomepage {
         cy.contains(this.dysonResultText, { timeout: 10000 }).should('be.visible').click();
     }
 
-    // visit nbs homepage
-    visitNBSHomepage() {
-        cy.visit('https://source.thenbs.com/');
+    // Amended to visitURL, now this method can be reused to navigate to any url thats passed into it
+    visitURL() {
+        // Load URL from fixture to avoid hardcoding
+        cy.fixture('urls').then((urls) => {
+            cy.visit(urls.nbsHomepage);
+        });
     }
 }
 

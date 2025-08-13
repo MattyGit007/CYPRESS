@@ -1,7 +1,6 @@
 // Page Object Model for the Dyson manufacturer page on NBS Source
 class DysonHomepage {
   // Selectors for elements on the Dyson page
-  dysonUrlPart = "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"; // Partial URL to identify Dyson page
   dysonHeader = "h1"; // Selector for the main page header (H1)
   contactNumber = '[action="telephone"]'; // Selector for the contact number link
   sourceLogoHref = 'a[href="https://source.thenbs.com/"]'; // Selector for the Source logo link
@@ -20,8 +19,8 @@ class DysonHomepage {
   // Actions
   //-------------
   // 1 - Verifies that the current URL and page header are correct for Dyson
-  verifyDysonPage() {
-    cy.url().should("include", this.dysonUrlPart); // Check URL contains Dyson path
+  verifyDysonPage(expectedUrlPart) {
+    cy.url().should("include", expectedUrlPart); // Check URL contains provided path
     cy.get(this.dysonHeader).should("have.text", "Dyson"); // Check H1 text is 'Dyson'
   }
 

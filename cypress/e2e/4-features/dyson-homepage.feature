@@ -14,7 +14,7 @@ Feature: dyson homepage regression tests
         Given I navigate to the Dyson manufacturer homepage
 
     Scenario: Verify the manufacturers homepage URL contains expected text
-        Then The URL will contain the expected text
+        Then The URL will contain the expected text "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"
 
     Scenario: I verify telephone number is as expected
         Then I verify telephone number is as expected
@@ -33,7 +33,6 @@ Feature: dyson homepage regression tests
 
     Scenario: I verify accessibility checks on the manufacturer homepage using AXE plugin and report results to console
         Then I verify accessibility checks on the manufacturer homepage using AXE plugin and report results to console  
-
 
     Scenario: I verify the API response and content are as expected
         Then I verify the API response and content are as expected

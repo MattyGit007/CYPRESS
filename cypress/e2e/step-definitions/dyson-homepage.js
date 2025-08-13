@@ -13,15 +13,17 @@ var {
 
 // Given step to visit NBSHomepage then visit the manufacturer home page
 Given('I navigate to the Dyson manufacturer homepage', () => {
-    nbsHomepage.visitNBSHomepage();
+    nbsHomepage.visitURL();// amended to visitURL
     nbsHomepage.acceptCookies();
-    nbsHomepage.searchFor("Dyson");
+    cy.fixture('searchTerms').then((data) => {
+        nbsHomepage.searchFor(data.dysonManufacturer);
+    });
     nbsHomepage.selectDysonResult();
 });
 
-// Then step to verify the URL contains expected text - use quotes to capture the parameter
-Then('The URL will contain the expected text', () => {
-    dysonHomePage.verifyDysonPage();
+// Then step to verify the URL contains expected text, the url is now passed in from the cucumber scenario step
+Then('The URL will contain the expected text {string}', (expectedUrlPart) => {
+    dysonHomePage.verifyDysonPage(expectedUrlPart);
 });
 
 // Then step to verify the telephone number is as expected
