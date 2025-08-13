@@ -30,6 +30,9 @@ jobs:
       run: npm install --legacy-peer-deps --force
  
 
-    - name: Run Dyson homepage feature and push results to Cypress Cloud
-      run: npx cypress run --spec "cypress/e2e/4-features/dyson-homepage.feature" --record --key 811fea40-deae-4afb-aa81-46621f6da712
+    - name: Run Dyson homepage feature and record to Cypress Cloud
+      run: npx cypress run --record --spec "cypress/e2e/4-features/dyson-homepage.feature"
+      env: 
+        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
 
