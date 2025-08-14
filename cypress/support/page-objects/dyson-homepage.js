@@ -20,8 +20,18 @@ class DysonHomepage {
   //-------------
   // 1 - Verifies that the current URL and page header are correct for Dyson
   verifyDysonPage(expectedUrlPart, expectedHeaderText) {
-    cy.url().should("include", expectedUrlPart); // Check URL contains provided path
-    cy.get(this.dysonHeader).should("have.text", expectedHeaderText); // Check H1 text matches expected from fixture
+    // If an expected URL segment is provided, verify it. Otherwise skip.
+    if (typeof expectedUrlPart !== "undefined" && expectedUrlPart !== null) {
+      cy.url().should("include", expectedUrlPart);
+    }
+
+    // If an expected header text is provided, verify it. Otherwise skip.
+    if (
+      typeof expectedHeaderText !== "undefined" &&
+      expectedHeaderText !== null
+    ) {
+      cy.get(this.dysonHeader).should("have.text", expectedHeaderText);
+    }
   }
 
   // 2 -Verifies the contact number link is visible, has correct text, and correct tel: protocol
