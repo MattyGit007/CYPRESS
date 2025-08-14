@@ -20,7 +20,7 @@ class NBSHomepage {
 
     // Selects a result from the search results by visible text (value passed in from step)
     selectDysonResult(resultText) {
-        this.checkAndSkipSurvey();
+        this.checkAndSkipSurvey(); // Check if the survey "Skip" button is present and click it if it exists
         cy.contains(resultText, { timeout: 10000 }).should('be.visible').click();
     }
 
