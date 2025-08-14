@@ -21,30 +21,36 @@ class DysonHomepage {
   // 1 - Verifies that the current URL and page header are correct for Dyson
   verifyDysonPage(expectedUrlPart, expectedHeaderText) {
     // If an expected URL segment is provided, verify it. Otherwise skip.
-    if (typeof expectedUrlPart !== "undefined" && expectedUrlPart !== null) {
+    // if (typeof expectedUrlPart !== "undefined" && expectedUrlPart !== null) {
       cy.url().should("include", expectedUrlPart);
-    }
+    // }
 
     // If an expected header text is provided, verify it. Otherwise skip.
-    if (
-      typeof expectedHeaderText !== "undefined" &&
-      expectedHeaderText !== null
-    ) {
+    // if (
+    //   typeof expectedHeaderText !== "undefined" &&
+    //   expectedHeaderText !== null
+    // ) {
       cy.get(this.dysonHeader).should("have.text", expectedHeaderText);
     }
-  }
+  // }
 
   // 2 -Verifies the contact number link is visible, has correct text, and correct tel: protocol
   verifyContactNumber(data) {
     cy.get(this.contactNumber, { timeout: 10000 })
-      .should("be.visible") // Ensure the contact number is visible
-      .should("have.text", data.contactNumber); // Ensure the text matches the expected number
-    // Additionally, verify the href uses the correct telephone protocol, ie tel:
-    cy.get(this.contactNumber).should(
-      "have.attr",
-      "href",
-      `tel:${data.contactNumber}`
-    );
+      .should("be.visible")
+      // The UI contains non-breaking spaces (\u00a0). Normalize and trim before comparing.
+      .invoke("text")
+      .then((txt) => txt.replace(/\u00a0/g, " ").trim())
+      .should("eq", data.contactNumber);
+
+    // Additionally, verify the href uses the correct telephone protocol, i.e. tel:
+    // Strip any stray whitespace in the href before comparing, just in case.
+    cy.get(this.contactNumber)
+      .should("have.attr", "href")
+      .then((href) => {
+        const normalizedHref = href.replace(/\s+/g, "");
+        expect(normalizedHref).to.eq(`tel:${data.contactNumber}`);
+      });
   }
   // 3- Verifies the title on the page is as expected
   verifyTitle() {

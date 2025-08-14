@@ -43,15 +43,10 @@ Then("I verify telephone number is as expected", () => {
   cy.fixture("contactNumber").then((data) => {
     // tell cypress to use our contactNumber.json fixture file
     // and use the contactNumber value in the verifyContactNumber function
-    dysonHomePage.verifyContactNumber(data.contactNumber); // pass the expectedContactNumber to the verifyContactNumber function
+    dysonHomePage.verifyContactNumber(data); // pass the expectedContactNumber to the verifyContactNumber function
   })
 
 });
-
-
-
-
-
 
 // Then step to verify the title on the page is as expected
 Then("I verify the title on the page is as expected", () => {
