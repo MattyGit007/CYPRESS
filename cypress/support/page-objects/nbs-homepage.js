@@ -15,7 +15,20 @@ class NBSHomepage {
 
     // Types the provided search term into the homepage search field
     searchFor(term) {
-        cy.get(this.searchField, { timeout: 10000 }).first().type(term);
+        // Dismiss any survey overlay if it appears
+        this.checkAndSkipSurvey();
+
+        cy.get(this.searchField, { timeout: 10000 })
+            .first()
+            .should('exist')
+            .should('be.visible')
+            .should('not.be.disabled')
+            .scrollIntoView()
+            .click()
+            .clear()
+            // Add an explicit timeout to the type to handle slow renders/focus
+            .type(term, { timeout: 10000 })
+            .should('have.value', term);
     }
 
     // Selects a result from the search results by visible text (value passed in from step)
