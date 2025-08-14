@@ -27,13 +27,29 @@ Given("I navigate to the Dyson manufacturer homepage", () => {
 
 // Then step to verify the URL contains expected text, the url is now passed in from the cucumber scenario step
 Then("The URL will contain the expected text {string}", (expectedUrlPart) => {
-  dysonHomePage.verifyDysonPage(expectedUrlPart); 
+  dysonHomePage.verifyDysonPage(expectedUrlPart);
 });
+
+// // Then step to verify the telephone number is as expected
+// Then("I verify telephone number is as expected", () => {
+//   dysonHomePage.verifyContactNumber();
+// });
+
 
 // Then step to verify the telephone number is as expected
 Then("I verify telephone number is as expected", () => {
-  dysonHomePage.verifyContactNumber();
+  cy.fixture("contactNumber").then((data) => {
+    // tell cypress to use our contactNumber.json fixture file
+    // and use the contactNumber value in the verifyContactNumber function
+    dysonHomePage.verifyContactNumber(data.contactNumber); // pass the expectedContactNumber to the verifyContactNumber function
+  })
+
 });
+
+
+
+
+
 
 // Then step to verify the title on the page is as expected
 Then("I verify the title on the page is as expected", () => {
