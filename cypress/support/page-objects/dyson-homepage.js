@@ -35,15 +35,15 @@ class DysonHomepage {
   }
 
   // 2 -Verifies the contact number link is visible, has correct text, and correct tel: protocol
-  verifyContactNumber() {
+  verifyContactNumber(data) {
     cy.get(this.contactNumber, { timeout: 10000 })
       .should("be.visible") // Ensure the contact number is visible
-      .should("have.text", " 08003457788 "); // Ensure the text matches the expected number
+      .should("have.text", data.contactNumber); // Ensure the text matches the expected number
     // Additionally, verify the href uses the correct telephone protocol, ie tel:
     cy.get(this.contactNumber).should(
       "have.attr",
       "href",
-      "tel:08003457788"
+      `tel:${data.contactNumber}`
     );
   }
   // 3- Verifies the title on the page is as expected
