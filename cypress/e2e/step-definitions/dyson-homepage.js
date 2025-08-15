@@ -91,3 +91,12 @@ Then(
     dysonHomePage.verifyDysonNavigationBar();
   }
 );
+
+
+// Then step to verify the back-to-top button works on Dyson homepage
+Then(
+  "I verify the back-to-top button works on Dyson homepage",
+  () => {
+  dysonHomePage.verifyBackToTopButton();
+  }
+);
