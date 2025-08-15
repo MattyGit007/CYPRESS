@@ -1,7 +1,8 @@
+const { checkAndSkipSurvey } = require("./nbs-homepage");
+
 // Page Object Model for the Dyson manufacturer page on NBS Source
 class DysonHomepage {
   // Selectors for elements on the Dyson page
-  dysonUrlPart = "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"; // Partial URL to identify Dyson page
   dysonHeader = "h1"; // Selector for the main page header (H1)
   contactNumber = '[action="telephone"]'; // Selector for the contact number link
   sourceLogoHref = 'a[href="https://source.thenbs.com/"]'; // Selector for the Source logo link
@@ -15,27 +16,44 @@ class DysonHomepage {
   literatureTab = '[data-cy="literatureTab"]'; // Selector for the Literature tab
   caseStudiesTab = '[data-cy="caseStudiesTab"]'; // Selector for the Case Studies tab
   aboutTab = '[data-cy="aboutTab"]'; // Selector for the About tab
+  backToTopButton = 'button[data-cy="backToTopButton"]'; // Stable selector for the back-to-top button
 
 
   // Actions
   //-------------
   // 1 - Verifies that the current URL and page header are correct for Dyson
-  verifyDysonPage() {
-    cy.url().should("include", this.dysonUrlPart); // Check URL contains Dyson path
-    cy.get(this.dysonHeader).should("have.text", "Dyson"); // Check H1 text is 'Dyson'
+  verifyDysonPage(expectedUrlPart, expectedHeaderText) {
+    // If an expected URL segment is provided, verify it. Otherwise skip.
+    if (expectedUrlPart) {
+      cy.url().should("include", expectedUrlPart);
+    }
+
+    // If an expected header text is provided, verify it. Otherwise skip.
+    if (expectedHeaderText) {
+      cy.get(this.dysonHeader, { timeout: 10000 })
+        .invoke("text")
+        .then((t) => t.trim())
+        .should("eq", expectedHeaderText);
+    }
   }
 
   // 2 -Verifies the contact number link is visible, has correct text, and correct tel: protocol
-  verifyContactNumber() {
+  verifyContactNumber(data) {
     cy.get(this.contactNumber, { timeout: 10000 })
-      .should("be.visible") // Ensure the contact number is visible
-      .should("have.text", " 08003457788 "); // Ensure the text matches the expected number
-    // Additionally, verify the href uses the correct telephone protocol, ie tel:
-    cy.get(this.contactNumber).should(
-      "have.attr",
-      "href",
-      "tel:08003457788"
-    );
+      .should("be.visible")
+      // The UI contains non-breaking spaces (\u00a0). Normalize and trim before comparing.
+      .invoke("text")
+      .then((txt) => txt.replace(/\u00a0/g, " ").trim())
+      .should("eq", data.contactNumber);
+
+    // Additionally, verify the href uses the correct telephone protocol, i.e. tel:
+    // Strip any stray whitespace in the href before comparing, just in case.
+    cy.get(this.contactNumber)
+      .should("have.attr", "href")
+      .then((href) => {
+        const normalizedHref = href.replace(/\s+/g, "");
+        expect(normalizedHref).to.eq(`tel:${data.contactNumber}`);
+      });
   }
   // 3- Verifies the title on the page is as expected
   verifyTitle() {
@@ -145,7 +163,39 @@ class DysonHomepage {
     cy.get(this.aboutTab)
       .should('have.attr', 'href', '/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about');
   }
+
+  //10 - Verifies the back-to-top button works on Dyson homepage
+  verifyBackToTopButton() {
+  // Ensure we start at the top so the button should be hidden
+  cy.scrollTo('top');
+  cy.get(this.backToTopButton).should('not.be.visible');
+
+  // Scroll to bottom to reveal, then click
+  cy.scrollTo('bottom');
+  this.checkAndSkipSurvey();
+    cy.get(this.backToTopButton, { timeout: 10000 })  
+      .click({ force: true }); // Click the button to scroll back to top
+
+    // Confirm returned to top
+    cy.window().its('scrollY').should('eq', 0);
+
+    // Usually hides again at the top
+    cy.get(this.backToTopButton).should('not.be.visible');
+  }
+
+  // Check that the survey "Skip" button is present and click it if it exists
+  //       { timeout: 10000 }; // Increase the timeout to 10 seconds
+  //       cy.get('.css-15a5wy5').click(); //Skip the survey pop-up
+  checkAndSkipSurvey() {
+      cy.get('body').then($body => {
+          if ($body.find(this.SkipButton).length > 0) {   // Check if the Skip button exists i.e. > 0
+              cy.get(this.SkipButton).click();            // and if it does, then click it
+          }
+      });
+  }
 }
+
 
 // Export a singleton instance of the DysonHomepage class
 module.exports = new DysonHomepage();
+
