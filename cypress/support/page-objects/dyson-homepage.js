@@ -36,6 +36,7 @@ class DysonHomepage {
 
   // 2 -Verifies the contact number link is visible, has correct text, and correct tel: protocol
   verifyContactNumber(data) {
+    cy.wait(1000);
     cy.get(this.contactNumber, { timeout: 10000 })
       .should("be.visible")
       // The UI contains non-breaking spaces (\u00a0). Normalize and trim before comparing.
