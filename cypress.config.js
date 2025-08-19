@@ -6,8 +6,8 @@ const { createEsbuildPlugin } = require("@badeball/cypress-cucumber-preprocessor
 module.exports = defineConfig({
   projectId: 'x5uffa',
   // Increase the default viewport size so pages render larger in the runner
-  viewportWidth: 1440,
-  viewportHeight: 900,
+  // viewportWidth: 1440,
+  // viewportHeight: 900,
   e2e: {
     specPattern: [
       'cypress/e2e/4-features/*.feature', // Define path to feature files
