@@ -174,9 +174,9 @@ class DysonHomepage {
 
   // Scroll to bottom to reveal, then click
   cy.scrollTo('bottom');
-  this.checkAndSkipSurvey();
+  // this.checkAndSkipSurvey();
     cy.get(this.backToTopButton, { timeout: 10000 })  
-      .click({ force: true }); // Click the button to scroll back to top
+      .click(); // Click the button to scroll back to top
 
     // Confirm returned to top
     cy.window().its('scrollY').should('eq', 0);
