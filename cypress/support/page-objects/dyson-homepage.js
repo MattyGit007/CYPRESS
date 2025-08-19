@@ -17,6 +17,8 @@ class DysonHomepage {
   caseStudiesTab = '[data-cy="caseStudiesTab"]'; // Selector for the Case Studies tab
   aboutTab = '[data-cy="aboutTab"]'; // Selector for the About tab
   backToTopButton = 'button[data-cy="backToTopButton"]'; // Stable selector for the back-to-top button
+  dysonHeaderBar = "cirrus-header-wrapper-sliding app-secondary-navbar nav"; // Selector for the Dyson header bar
+  
 
 
   // Actions
@@ -193,9 +195,51 @@ class DysonHomepage {
           }
       });
   }
+
+//   // Gracefully dismiss common overlays if present (cookies/surveys/modals)
+//   dismissOverlaysIfPresent() {
+//     cy.get('body').then(($b) => {
+//       const selectors = [
+//         '#onetrust-accept-btn-handler', // OneTrust accept
+//         '[data-testid="onetrust-accept-btn-handler"]',
+//         '.css-15a5wy5', // survey skip (observed)
+//         '[aria-label="Close"]', // generic close
+//         '.ot-close-icon'
+//       ];
+//       selectors.forEach((sel) => {
+//         if ($b.find(sel).length) {
+//           cy.get(sel).first().click({ force: true });
+//         }
+//       });
+//     });
+//   }
+
+
+
+// //11 - verify the headers and href attribute of the Dyson homepage 
+// verifyHeadersAndHrefAttributes() {    
+//   // ensure overlays are not covering the header
+//   this.dismissOverlaysIfPresent();
+//   cy.scrollTo('top');
+//   cy.get(this.dysonHeaderBar, { timeout: 15000 })
+//     .should('be.visible')
+//     .within(() => {
+//       const labels = ['Home', 'What\'s new', 'What’s new', 'Browse', 'BIM Library', 'Inspiration', 'Collections', 'CPD'];
+//       // accept either straight or curly apostrophe for What’s new
+//       labels.forEach((text) => {
+//         if (text === "What's new") {
+//           // handled by both entries above; skip duplicate run
+//           return;
+//         }
+//         cy.contains('a:visible', text, { matchCase: false }).should('exist');
+//       });
+//     });
+// }
+
+
+Export a singleton instance of the DysonHomepage class
 }
 
 
-// Export a singleton instance of the DysonHomepage class
 module.exports = new DysonHomepage();
 

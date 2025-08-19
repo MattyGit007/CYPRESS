@@ -100,3 +100,9 @@ Then(
   dysonHomePage.verifyBackToTopButton();
   }
 );
+
+// Then step to verify the headers and href attribute of the Dyson homepage are as expected
+Then("I verify the headers and href attributes on Dyson homepage are as expected", () => {
+  dysonHomePage.verifyHeadersAndHrefAttributes();
+});
+
