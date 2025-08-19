@@ -16,7 +16,7 @@ class NBSHomepage {
     // Types the provided search term into the homepage search field
     searchFor(term) {
         // Dismiss any survey overlay if it appears
-        this.checkAndSkipSurvey();
+        // this.checkAndSkipSurvey();
 
         cy.get(this.searchField, { timeout: 10000 })
             .first()
@@ -33,13 +33,15 @@ class NBSHomepage {
 
     // Selects a result from the search results by visible text (value passed in from step)
     selectDysonResult(resultText) {
-        this.checkAndSkipSurvey(); // Check if the survey "Skip" button is present and click it if it exists
+        // this.checkAndSkipSurvey(); // Check if the survey "Skip" button is present and click it if it exists
         cy.contains(resultText, { timeout: 10000 }).should('be.visible').click();
     }
 
     // Navigate to a provided URL (value should be supplied by the step, not read here)
     visitURL(url) {
         cy.visit(url);
+        cy.wait(1000); // Wait for 1 second
+        cy.setSurveyDismissFlags();
     }
 
     // Check that the survey "Skip" button is present and click it if it exists

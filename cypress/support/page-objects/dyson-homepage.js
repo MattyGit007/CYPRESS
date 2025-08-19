@@ -237,7 +237,7 @@ class DysonHomepage {
 // }
 
 
-Export a singleton instance of the DysonHomepage class
+// Export a singleton instance of the DysonHomepage class
 }
 
 
