@@ -17,6 +17,8 @@ class DysonHomepage {
   caseStudiesTab = '[data-cy="caseStudiesTab"]'; // Selector for the Case Studies tab
   aboutTab = '[data-cy="aboutTab"]'; // Selector for the About tab
   backToTopButton = 'button[data-cy="backToTopButton"]'; // Stable selector for the back-to-top button
+  dysonHeaderBar = "app-secondary-navbar"; // Selector for the Dyson header bar
+  
 
 
   // Actions
@@ -193,9 +195,34 @@ class DysonHomepage {
           }
       });
   }
+
+
+
+
+//11 - verify the headers and href attribute of the Dyson homepage 
+verifyHeadersAndHrefAttributes() {    
+  cy.viewport(1440, 900); // Set viewport size for the test
+  
+
+  
+
+//   
+//   
+  cy.get(this.dysonHeaderBar, { timeout: 15000 })
+    .should('be.visible')
+    .should('contain.text', 'Home') // Verify the header contains 'Home
+    .and('contain.text', 'Browse') // Verify the header contains 'Browse'
+    .and('contain.text', "What's new") // Adjust to match actual UI text
+    .and('contain.text', 'BIM Library') // Verify the header contains 'BIM Library'
+    .and('contain.text', 'Inspiration') // Verify the header contains 'Insipiration'
+    .and('contain.text', 'Collections') // Verify the header contains 'Collections'
+    .and('contain.text', 'CPD') // Verify the header contains 'CPD'
 }
 
 
 // Export a singleton instance of the DysonHomepage class
+}
+
+
 module.exports = new DysonHomepage();
 
