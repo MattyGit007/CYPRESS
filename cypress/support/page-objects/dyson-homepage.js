@@ -18,7 +18,11 @@ class DysonHomepage {
   aboutTab = '[data-cy="aboutTab"]'; // Selector for the About tab
   backToTopButton = 'button[data-cy="backToTopButton"]'; // Stable selector for the back-to-top button
   dysonHeaderBar = "app-secondary-navbar"; // Selector for the Dyson header bar
-  
+  homeTab = 'a[title="Homepage"]'  
+  whatsNewNavButton = '[data-cy="whatsNewNavButton"]'; // Selector for the What's New tab link
+  allCategoriesLink = 'a[title="Browse all categories"]'; // Selector for the Browse all categories link
+  BIMObjectCategoriesLink = 'a[title="Browse BIM object categories"]'; // Selector for the Browse BIM object categories link
+  allManufacturersLink = 'a[title="Browse all manufacturers"]'; // Selector for the Browse all manufacturers link
 
 
   // Actions
@@ -202,12 +206,6 @@ class DysonHomepage {
 //11 - verify the headers and href attribute of the Dyson homepage 
 verifyHeadersAndHrefAttributes() {    
   cy.viewport(1440, 900); // Set viewport size for the test
-  
-
-  
-
-//   
-//   
   cy.get(this.dysonHeaderBar, { timeout: 15000 })
     .should('be.visible')
     .should('contain.text', 'Home') // Verify the header contains 'Home
@@ -217,6 +215,29 @@ verifyHeadersAndHrefAttributes() {
     .and('contain.text', 'Inspiration') // Verify the header contains 'Insipiration'
     .and('contain.text', 'Collections') // Verify the header contains 'Collections'
     .and('contain.text', 'CPD') // Verify the header contains 'CPD'
+
+  cy.get(this.homeTab) // Selector for the Home tab link
+  .should('be.visible');
+
+  cy.get(this.whatsNewNavButton) // Selector for the What's New tab link
+  .should('be.visible');
+
+    cy.get('button[title="Browse"]')
+      .trigger("mouseenter", { force: true })
+
+  cy.get(this.allCategoriesLink)
+    .should('be.visible') // Ensure the Browse all categories link is visible
+    .should('have.attr', 'href', '/categories'); // Verify the href attribute is correct
+
+  cy.get(this.BIMObjectCategoriesLink)
+    .should('be.visible') // Ensure the Browse BIM object categories link is visible
+    .should('have.attr', 'href', '/categories/bim'); // Verify the href attribute is correct      
+
+  cy.get(this.allManufacturersLink)
+    .should('be.visible') // Ensure the Browse all manufacturers link is visible
+    .should('have.attr', 'href', '/manufacturers'); // Verify the href attribute is correct
+
+
 }
 
 
