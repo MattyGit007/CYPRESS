@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-preprocessor");
+const { addMatchImageSnapshotPlugin } = require('cypress-image-snapshot/plugin');
 const { createEsbuildPlugin } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
  
 module.exports = defineConfig({
@@ -13,6 +14,8 @@ module.exports = defineConfig({
     async setupNodeEvents(on, config) {
       // Add cucumber preprocessor plugin
       await addCucumberPreprocessorPlugin(on, config);
+      // Add image snapshot plugin
+      addMatchImageSnapshotPlugin(on, config);
       
       // Set up esbuild preprocessor with cucumber plugin
       on(

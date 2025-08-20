@@ -11,7 +11,8 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.5",
     "axe-core": "^4.10.3",
     "cypress": "14.4.1",
-    "cypress-axe": "^1.6.0"
+    "cypress-axe": "^1.6.0",
+    "cypress-image-snapshot": "^4.0.1"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": "cypress/e2e/step-definitions/**/*.js",

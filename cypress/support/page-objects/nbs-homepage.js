@@ -40,6 +40,8 @@ class NBSHomepage {
     // Navigate to a provided URL (value should be supplied by the step, not read here)
     visitURL(url) {
         cy.visit(url);
+        cy.wait(1000); // Wait for 1 second
+        cy.setSurveyDismissFlags(); // call custom command
     }
 
     // Check that the survey "Skip" button is present and click it if it exists

@@ -18,7 +18,7 @@ class DysonHomepage {
   aboutTab = '[data-cy="aboutTab"]'; // Selector for the About tab
   backToTopButton = 'button[data-cy="backToTopButton"]'; // Stable selector for the back-to-top button
   dysonHeaderBar = "app-secondary-navbar"; // Selector for the Dyson header bar
-  homeTab = 'a[title="Homepage"]'  
+  homeTab = 'a[title="Homepage"]'
   whatsNewNavButton = '[data-cy="whatsNewNavButton"]'; // Selector for the What's New tab link
   allCategoriesLink = 'a[title="Browse all categories"]'; // Selector for the Browse all categories link
   BIMObjectCategoriesLink = 'a[title="Browse BIM object categories"]'; // Selector for the Browse BIM object categories link
@@ -194,8 +194,8 @@ class DysonHomepage {
   //       cy.get('.css-15a5wy5').click(); //Skip the survey pop-up
   checkAndSkipSurvey() {
       cy.get('body').then($body => {
-          if ($body.find(this.SkipButton).length > 0) {   // Check if the Skip button exists i.e. > 0
-              cy.get(this.SkipButton).click();            // and if it does, then click it
+      if ($body.find(this.SkipButton).length > 0) {   // Check if the Skip button exists i.e. > 0
+        cy.get(this.SkipButton).click();            // and if it does, then click it
           }
       });
   }
