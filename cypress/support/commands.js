@@ -23,3 +23,19 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+// custom command to set survey dismissal flags
+
+Cypress.Commands.add('setSurveyDismissFlags', (pollId = '1657266') => {
+    const done = `${pollId}%2C${pollId}`;
+    cy.window({ log: false }).then((win) => {
+        try {
+            win.localStorage.setItem('_hjMinimizedPolls', pollId);
+            win.localStorage.setItem('_hjDonePolls', done);
+        } catch (e) {
+            // Surface a clear error if localStorage is not accessible
+            throw new Error(`Failed to set survey flags in localStorage: ${e?.message || e}`);
+        }
+    });
+});

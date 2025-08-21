@@ -18,7 +18,7 @@ class DysonHomepage {
   aboutTab = '[data-cy="aboutTab"]'; // Selector for the About tab
   backToTopButton = 'button[data-cy="backToTopButton"]'; // Stable selector for the back-to-top button
   dysonHeaderBar = "app-secondary-navbar"; // Selector for the Dyson header bar
-  homeTab = 'a[title="Homepage"]'  
+  homeTab = 'a[title="Homepage"]'
   whatsNewNavButton = '[data-cy="whatsNewNavButton"]'; // Selector for the What's New tab link
   allCategoriesLink = 'a[title="Browse all categories"]'; // Selector for the Browse all categories link
   BIMObjectCategoriesLink = 'a[title="Browse BIM object categories"]'; // Selector for the Browse BIM object categories link
@@ -194,8 +194,8 @@ class DysonHomepage {
   //       cy.get('.css-15a5wy5').click(); //Skip the survey pop-up
   checkAndSkipSurvey() {
       cy.get('body').then($body => {
-          if ($body.find(this.SkipButton).length > 0) {   // Check if the Skip button exists i.e. > 0
-              cy.get(this.SkipButton).click();            // and if it does, then click it
+      if ($body.find(this.SkipButton).length > 0) {   // Check if the Skip button exists i.e. > 0
+        cy.get(this.SkipButton).click();            // and if it does, then click it
           }
       });
   }
@@ -236,10 +236,19 @@ verifyHeadersAndHrefAttributes() {
   cy.get(this.allManufacturersLink)
     .should('be.visible') // Ensure the Browse all manufacturers link is visible
     .should('have.attr', 'href', '/manufacturers'); // Verify the href attribute is correct
-
-
 }
 
+  // 12 - verify the baseline image snapshot matches the current image snapshot
+  verifyImageSnapshot() {    
+    cy.viewport(1000, 4410); // Set a fixed viewport size to match the baseline snapshot
+    cy.wait(2000); // Wait for 2 seconds to ensure the site has loaded and dynamic content is rendered
+    cy.scrollTo("bottom"); // Scroll to the bottom to ensure all content is rendered
+    cy.wait(3000); // Wait a bit after scrolling
+    cy.matchImageSnapshot('dyson-homepage-snapshot', {
+        failureThreshold: 0.01,
+        failureThresholdType: 'percent',
+      });
+  }
 
 // Export a singleton instance of the DysonHomepage class
 }

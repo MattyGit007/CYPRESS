@@ -46,4 +46,6 @@ Feature: dyson homepage regression tests
     Scenario: I verify the headers and href attributes on Dyson homepage are as expected
         Then I verify the headers and href attributes on Dyson homepage are as expected
 
+    Scenario: I verify that the baseline image snapshot matches the current image snapshot
+        Then I verify that the baseline image snapshot matches the current image snapshot
 
