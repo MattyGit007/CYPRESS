@@ -106,3 +106,10 @@ Then("I verify the headers and href attributes on Dyson homepage are as expected
   dysonHomePage.verifyHeadersAndHrefAttributes();
 });
 
+Then(
+  "I verify that the baseline image snapshot matches the current image snapshot",
+  () => {
+    dysonHomePage.verifyImageSnapshot();
+  }
+);
+

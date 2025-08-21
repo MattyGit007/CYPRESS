@@ -236,10 +236,19 @@ verifyHeadersAndHrefAttributes() {
   cy.get(this.allManufacturersLink)
     .should('be.visible') // Ensure the Browse all manufacturers link is visible
     .should('have.attr', 'href', '/manufacturers'); // Verify the href attribute is correct
-
-
 }
 
+  // 12 - verify the baseline image snapshot matches the current image snapshot
+  verifyImageSnapshot() {    
+    cy.viewport(1000, 4410); // Set a fixed viewport size to match the baseline snapshot
+    cy.wait(2000); // Wait for 2 seconds to ensure the site has loaded and dynamic content is rendered
+    cy.scrollTo("bottom"); // Scroll to the bottom to ensure all content is rendered
+    cy.wait(2000); // Wait a bit after scrolling
+    cy.matchImageSnapshot('dyson-homepage-snapshot', {
+        failureThreshold: 0.01,
+        failureThresholdType: 'percent',
+      });
+  }
 
 // Export a singleton instance of the DysonHomepage class
 }
