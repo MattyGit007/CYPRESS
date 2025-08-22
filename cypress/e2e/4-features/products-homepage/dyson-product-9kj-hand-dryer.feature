@@ -1,0 +1,18 @@
+# The main purpose of the project is to demonstrate the following:
+#  - Cucumber/Gherkin and Feature file implementation
+#  - Page Object Model
+#  - Repository created in GitHub
+#  - Independent tests
+#  - CI Pipeline Integration
+#  - Implementation of the Axe-plugin for usability reporting
+#  - API Testing
+#  - Different ways of interacting and verifying UI element attributes
+
+Feature: dyson 9kj hand dryer regression tests
+
+    Background: navigate to the Dyson 9kj hand dryer page
+        Given I navigate to the Dyson 9kj hand dryer page
+
+    # Scenario: Verify the Dyson products page ...
+    #     Then The   
+
