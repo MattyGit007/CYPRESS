@@ -8,7 +8,7 @@ module.exports = defineConfig({
   projectId: 'x5uffa',
   e2e: {
     specPattern: [
-      'cypress/e2e/4-features/*.feature', // Define path to feature files
+      'cypress/e2e/4-features/**/*.feature', // Define path to feature files
       'cypress/e2e/3 -Matts-Tests/*.js', // Define path to feature files
     ],
     async setupNodeEvents(on, config) {
