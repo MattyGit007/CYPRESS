@@ -13,6 +13,6 @@ Feature: dyson 9kj hand dryer regression tests
     Background: navigate to the Dyson 9kj hand dryer page
         Given I navigate to the Dyson 9kj hand dryer page
 
-    # Scenario: Verify the Dyson products page ...
-    #     Then The   
+    Scenario: I verify the 9kj hand dryer breadcrumb bar contains expected text 
+        Then I verify the 9kj hand dryer breadcrumb bar contains expected text
 

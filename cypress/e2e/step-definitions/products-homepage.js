@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 // Import page objects
+const { should } = require("chai");
 const dysonHomePage = require("../../support/page-objects/dyson-homepage");
 const nbsHomepage = require("../../support/page-objects/nbs-homepage");
 
@@ -18,5 +19,23 @@ Given("I navigate to the Dyson 9kj hand dryer page", () => {
     nbsHomepage.visitURL(urls.dyson9kjHandDryer); // and use the dyson9kjHandDryer value in the visitURL function
 
 });
-
 });
+// // Then step to verify the breadcrumb bar is visible
+// Then("Ensure breadcrums bar is visible", () => {
+// // it('Ensure breadcrums bar is visible', () => {
+// //         // Verify the  breadcrums bar is visible
+// cy.get('app-breadcrumbs nav ul')
+// .shouldbe('visible')
+
+// });
+
+
+// Then step to verify the breadcrumb bar contains expected text
+// Then("I verify the bar contains expected text", () => {
+// cy.get('app-breadcrumbs nav ul a').should('contain.text', 'Home')
+// cy.get('app-breadcrumbs nav ul a').should('contain.text', 'Categories')
+// });
+
+Then("I verify the 9kj hand dryer breadcrumb bar contains expected text", () => {
+    dysonHomePage.verify9kjHandDryerBreadcrumBar();
+}); 
