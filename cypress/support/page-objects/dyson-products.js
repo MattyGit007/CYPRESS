@@ -1,9 +1,12 @@
 const { checkAndSkipSurvey } = require("./nbs-homepage");
 
 // Page Object Model for the Dyson manufacturer page on NBS Source
-class DysonHomepage {
-  // Selectors for elements on the Dyson page
+// class DysonHomepage {
+//   // Selectors for elements on the Dyson page
 
+
+  class DysonProducts {
+  // Selectors for elements on the Dyson page
     // Selector for the main header on the Dyson page   
     HandDryerBreadCrumbBar = 'app-breadcrumbs nav ul';
     
@@ -20,6 +23,6 @@ class DysonHomepage {
   } 
 
 // Export a singleton instance of the DysonHomepage class
-module.exports = new DysonHomepage();
+module.exports = new DysonProducts();
 
   
