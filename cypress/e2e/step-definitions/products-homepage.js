@@ -18,9 +18,9 @@ Given("I navigate to the Dyson 9kj hand dryer page", () => {
   cy.fixture("urls").then((urls) => {
     // tell cypress to use our url.json fixture file
     nbsHomepage.visitURL(urls.dyson9kjHandDryer); // and use the dyson9kjHandDryer value in the visitURL function
-    nbsHomepage.acceptCookies();
-  
-
+  });
+  // Accept cookies after navigating
+  nbsHomepage.acceptCookies();
 });
 
 
@@ -31,7 +31,6 @@ Given("I navigate to the Dyson 9kj hand dryer page", () => {
 Then("I verify the 9kj hand dryer breadcrumb bar contains expected text", () => {
   dysonProducts.verify9kjHandDryerBreadcrumBar();
 });
-  })
 
 // // Then step to verify the breadcrumb bar is visible
 // Then("Ensure breadcrums bar is visible", () => {
