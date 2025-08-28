@@ -25,3 +25,10 @@ Then("I verify the 9kj hand dryer breadcrumb bar contains expected text", () => 
   dysonProducts.verify9kjHandDryerBreadcrumBar();
 });
 
+Then("I verify the 9kj hand dryer breadcrumb bar text is in the correct order", () => {
+  dysonProducts.verify9kjHandDryerBreadcrumBar();
+});
+
+Then("I verify the 9kj hand dryer breadcrumb bar hrefs are correct", () => {
+  dysonProducts.verify9kjHandDryerBreadcrumBar();
+});

@@ -16,3 +16,9 @@ Feature: dyson 9kj hand dryer regression tests
     Scenario: I verify the 9kj hand dryer breadcrumb bar contains expected text 
         Then I verify the 9kj hand dryer breadcrumb bar contains expected text
 
+    Scenario: I verify the 9kj hand dryer breadcrumb bar text is in the correct order
+        Then I verify the 9kj hand dryer breadcrumb bar text is in the correct order
+
+    Scenario: I verify the 9kj hand dryer breadcrumb bar hrefs are correct
+        Then I verify the 9kj hand dryer breadcrumb bar hrefs are correct   
+        
