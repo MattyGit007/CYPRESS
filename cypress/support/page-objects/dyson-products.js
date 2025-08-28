@@ -17,9 +17,8 @@ const { checkAndSkipSurvey } = require("./nbs-homepage");
     verify9kjHandDryerBreadcrumBar() {
       cy.get(this.HandDryerBreadCrumbBar)
         .should("be.visible")
-      //   .should("contain.text", "Products")
-    }
-    
+        .should("contain.text", "Categories")
+    }    
   } 
 
 // Export a singleton instance of the DysonHomepage class
