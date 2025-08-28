@@ -31,7 +31,7 @@ jobs:
  
 
     - name: Run Dyson homepage feature and record to Cypress Cloud
-      run: npx cypress run --record --spec "cypress/e2e/4-features/dyson-homepage.feature"
+      run: npx cypress run --record --spec "cypress/e2e/4-features/manufacturers-homepage/dyson-homepage.feature"
       env: 
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
