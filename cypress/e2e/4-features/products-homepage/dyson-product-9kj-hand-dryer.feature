@@ -22,3 +22,6 @@ Feature: dyson 9kj hand dryer regression tests
     Scenario: I verify the 9kj hand dryer breadcrumb bar hrefs are correct
         Then I verify the 9kj hand dryer breadcrumb bar hrefs are correct   
         
+    Scenario: I  verify the tooltip text is correct for the BOS button when hovered over. 
+        Then I verify the tooltip text is correct for the BOS button when hovered over.
+        

@@ -1,3 +1,4 @@
+const { should } = require("chai");
 const { checkAndSkipSurvey } = require("./nbs-homepage");
 
 // Page Object Model for the Dyson manufacturer page on NBS Source
@@ -9,6 +10,8 @@ const { checkAndSkipSurvey } = require("./nbs-homepage");
   // Selectors for elements on the Dyson page
     // Selector for the main header on the Dyson page   
     HandDryerBreadCrumbBar = 'app-breadcrumbs nav ul';
+    bosButtonSelector = '[data-cy="product-landing-bos-badge"]'; // selector for the BOS button
+    // bosButtonSelector = 'button[data-cy="product-landing-bos-badge"]'; // selector for the BOS button
     
 
     // Actions
@@ -56,12 +59,37 @@ verify9kjHandDryerBreadcrumBar() {
     { text: "Personal dryers", href: "/categories/bim/fittings-furnishings-and-equipment/furniture/personal-dryers" },
     { text: "Hand dryers", href: "/categories/bim/fittings-furnishings-and-equipment/furniture/personal-dryers/hand-dryers" }
   ];  
-
-//NOTE TO SELF FOR TOMMORROW  - SHOULD i DO THIS WAS , OR CY.GET EACH INDIVIDUAL TAB THEN CHECK HREF??
-
 }
     
-  } 
+//4 - Verifies that the tooltip text for the BOS button is correct when hovered over
+verifyBosButtonTooltip() {
+  // const bosButtonSelector = 'product-landing-bos-badge'; // Replace with the actual selector for the BOS button
+  // const expectedTooltipText = 'BOS'; // Replace with the expected tooltip text
+  // cy.get(bosButtonSelector)
+  //   .trigger('mouseover') // Simulate hover action
+  //   .invoke('attr', 'title') // Get the title attribute which contains the tooltip text
+  //   .should('equal', expectedTooltipText); // Assert that the tooltip text is as expected
+
+  // cy.get('[data-cy="product-landing-bos-badge"]').trigger('mouseover')
+  //   .wait(500); // wait for tooltip to appear
+  // cy.get('.tooltip').should('be.visible').and('contain', 'This product\'s BIM objects are verified to the NBS BIM Object Standard');
+
+
+  cy.get(this.bosButtonSelector)
+  .should('be.visible')
+
+
+  
+  
+  .trigger('mouseover');
+  cy.get('.tooltip').should('be.visible').and('contain', "This product's BIM objects are verified to the NBS BIM Object Standard");
+
+
+  };
+
+
+
+}
 
 // Export a singleton instance of the DysonHomepage class
 module.exports = new DysonProducts();
