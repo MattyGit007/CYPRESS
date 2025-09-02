@@ -53,15 +53,26 @@ class DysonProducts {
 
   // Verifies BOS button tooltip
   verifyBosButtonTooltip() {
-    cy.get(this.bosButtonSelector)
-      .should('be.visible')
-      // .realHover();
-      .trigger('mouseover');
+    // cy.get(this.bosButtonSelector)
+    //   .should('be.visible')
+    //   // .realHover();
+    //   .trigger('mouseover');
 
-    cy.get('.mat-mdc-tooltip-surface:visible')
-    .should('contain.text', "This product's BIM objects are verified to the NBS BIM Object Standard");
+    // cy.get('.mat-mdc-tooltip-surface:visible')
+    // .should('contain.text', "This product's BIM objects are verified to the NBS BIM Object Standard");
     
 
+    //Hi Matt, this worked for myself, I used cy.contains to grab onto our BOS button and it seemed good from there
+    cy.contains("BOS")
+      .should("be.visible")
+      .trigger("mouseenter", { force: true });
+
+    cy.get(".mat-mdc-tooltip-surface", { timeout: 5000 })
+      .should("be.visible")
+      .should(
+        "contain.text",
+        "This product's BIM objects are verified to the NBS BIM Object Standard"
+      );
 
 
 
