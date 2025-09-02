@@ -22,15 +22,15 @@ Given("I navigate to the Dyson 9kj hand dryer page", () => {
 });
 
 Then("I verify the 9kj hand dryer breadcrumb bar contains expected text", () => {
-  dysonProducts.verify9kjHandDryerBreadcrumBar();
+  dysonProducts.verifyBreadcrumBarContainsText();
 });
 
 Then("I verify the 9kj hand dryer breadcrumb bar text is in the correct order", () => {
-  dysonProducts.verify9kjHandDryerBreadcrumBar();
+  dysonProducts.verifyBreadcrumBarOrder();
 });
 
 Then("I verify the 9kj hand dryer breadcrumb bar hrefs are correct", () => {
-  dysonProducts.verify9kjHandDryerBreadcrumBar();
+  dysonProducts.verifyBreadcrumBarHrefs();
 });
 
 Then("I verify the tooltip text is correct for the BOS button when hovered over.", () => {
