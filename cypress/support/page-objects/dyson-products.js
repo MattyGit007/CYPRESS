@@ -3,7 +3,7 @@ const { checkAndSkipSurvey } = require("./nbs-homepage");
 class DysonProducts {
   // Selectors for elements on the Dyson page
   HandDryerBreadCrumbBar = 'app-breadcrumbs nav ul';
-  bosButtonSelector = '[data-cy="product-landing-bos-badge"]';
+
 
   // Verifies breadcrumb bar contains expected text
   verifyBreadcrumBarContainsText() {
@@ -53,16 +53,7 @@ class DysonProducts {
 
   // Verifies BOS button tooltip
   verifyBosButtonTooltip() {
-    // cy.get(this.bosButtonSelector)
-    //   .should('be.visible')
-    //   // .realHover();
-    //   .trigger('mouseover');
 
-    // cy.get('.mat-mdc-tooltip-surface:visible')
-    // .should('contain.text', "This product's BIM objects are verified to the NBS BIM Object Standard");
-    
-
-    //Hi Matt, this worked for myself, I used cy.contains to grab onto our BOS button and it seemed good from there
     cy.contains("BOS")
       .should("be.visible")
       .trigger("mouseenter", { force: true });
@@ -73,13 +64,6 @@ class DysonProducts {
         "contain.text",
         "This product's BIM objects are verified to the NBS BIM Object Standard"
       );
-
-
-
-      // cy.get('.cdk-overlay-container .tooltip', { timeout: 10000 }).should('be.visible');
-    // cy.get('.tooltip', { timeout: 10000 }) 
-    //   .should('be.visible')
-    //   .and('contain', "This product's BIM objects are verified to the NBS BIM Object Standard");
   }
 }
 
