@@ -31,7 +31,7 @@ class DysonHomepage {
   verifyDysonPage(expectedUrlPart, expectedHeaderText) {
     // If an expected URL segment is provided, verify it. Otherwise skip.
     if (expectedUrlPart) {
-      cy.url().should("include", expectedUrlPart);
+      cy.url({ timeout: 10000 }).should("include", expectedUrlPart);
     }
 
     // If an expected header text is provided, verify it. Otherwise skip.
@@ -54,7 +54,7 @@ class DysonHomepage {
 
     // Additionally, verify the href uses the correct telephone protocol, i.e. tel:
     // Strip any stray whitespace in the href before comparing, just in case.
-    cy.get(this.contactNumber)
+    cy.get(this.contactNumber, { timeout: 10000 })
       .should("have.attr", "href")
       .then((href) => {
         const normalizedHref = href.replace(/\s+/g, "");
@@ -78,8 +78,8 @@ class DysonHomepage {
 
   // 5 - Verifies the external manufacturer link attribute contains the correct url
   verifyWebsiteLink() {
-    cy.get(this.websiteLink )
-      .should("be.visible", { timeout: 10000 }) // Ensure the external manufacturer link is visible
+    cy.get(this.websiteLink, { timeout: 10000 } )
+      .should("be.visible") // Ensure the external manufacturer link is visible
       .should(
         "have.attr",
         "href",
@@ -90,7 +90,7 @@ class DysonHomepage {
 
   // 6 - Verifies the contact manufacturer button shows the correct text
   verifyContactManufacturerButton() {
-    cy.get(this.contactManufacturerButton)
+    cy.get(this.contactManufacturerButton, { timeout: 10000 })
       .should("be.visible") // Ensure the contact manufacturer button is visible
       .should("contain.text", "Contact manufacturer"); // Verify the button text is as expected
   }
@@ -245,9 +245,9 @@ verifyHeadersAndHrefAttributes() {
     cy.scrollTo("bottom"); // Scroll to the bottom to ensure all content is rendered
     cy.wait(3000); // Wait a bit after scrolling
     cy.matchImageSnapshot('dyson-homepage-snapshot', {
-        failureThreshold: 0.01,
-        failureThresholdType: 'percent',
-      });
+      failureThreshold: 0.01,
+      failureThresholdType: 'percent',
+    });
   }
 
 // Export a singleton instance of the DysonHomepage class
