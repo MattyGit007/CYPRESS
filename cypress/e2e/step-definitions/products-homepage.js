@@ -37,3 +37,10 @@ Then("I verify the tooltip text is correct for the BOS button when hovered over.
   dysonProducts.verifyBosButtonTooltip();
 });
 
+Then("I verify the download BIM button is visible and enabled", () => {
+  dysonProducts.verifyDownloadBIMButton();
+});
+
+Then("I verify the download BIM popup contains expected text", () => {
+  dysonProducts.verifyDownloadBIMPopupText();
+}); 

@@ -65,6 +65,18 @@ class DysonProducts {
         "This product's BIM objects are verified to the NBS BIM Object Standard"
       );
   }
+
+  // Verifies Download BIM button is visible and enabled
+  verifyDownloadBIMButton() {
+    cy.contains("Download BIM")
+      .should("be.visible")
+      .and("not.be.disabled");
+  } 
+
+
+
+
+
 }
 
 module.exports = new DysonProducts();
